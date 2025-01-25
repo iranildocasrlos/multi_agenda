@@ -10,7 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-from pathlib import Path
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -103,19 +109,28 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = "UTC"
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_L10N = True
 
+USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATIC_URL = '/static/' 
+
+# STATICFILES_DIRS = [ # talvez em Produção podesse usar assim.
+#     BASE_DIR / 'static',
+# ]
+
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
